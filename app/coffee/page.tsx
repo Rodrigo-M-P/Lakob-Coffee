@@ -98,7 +98,7 @@ export default function CoffeePage() {
                   </p>
 
                   <div className="mb-8">
-                    <Button className="bg-gold-500 hover:bg-gold-600 text-black px-6 py-3 rounded-md font-medium cursor-hover">
+                    <Button href="https://sk03nf-yp.myshopify.com/" className="bg-gold-500 hover:bg-gold-600 text-black px-6 py-3 rounded-md font-medium cursor-hover">
                       Comprar Ahora
                     </Button>
                   </div>

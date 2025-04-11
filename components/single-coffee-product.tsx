@@ -32,6 +32,11 @@ const coffeeProduct = {
 }
 
 export default function SingleCoffeeProduct() {
+  // Función para redirigir a Shopify
+  const redirectToShopify = () => {
+    window.location.href = "https://sk03nf-yp.myshopify.com/?_ab=0&_fd=0&_sc=1"
+  }
+
   return (
     <div className="py-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -67,7 +72,10 @@ export default function SingleCoffeeProduct() {
           <p className="text-gold-100 mb-8">{coffeeProduct.description}</p>
 
           <div className="mb-8">
-            <Button className="bg-gold-500 hover:bg-gold-600 text-black px-6 py-3 rounded-md font-medium cursor-hover">
+            <Button
+              className="bg-gold-500 hover:bg-gold-600 text-black px-6 py-3 rounded-md font-medium cursor-hover"
+              onClick={redirectToShopify}
+            >
               Comprar Ahora
             </Button>
           </div>

@@ -8,7 +8,6 @@ import { Leaf, Coffee, Heart } from "lucide-react"
 import RevealText from "@/components/reveal-text"
 import ImpactSection from "@/components/impact-section"
 import CoffeeCategoriesCarousel from "@/components/coffee-categories-carousel"
-import { Button } from "@/components/ui/button"
 
 export default function CoffeePage() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -98,9 +97,14 @@ export default function CoffeePage() {
                   </p>
 
                   <div className="mb-8">
-                    <Button href="https://sk03nf-yp.myshopify.com/" className="bg-gold-500 hover:bg-gold-600 text-black px-6 py-3 rounded-md font-medium cursor-hover">
+                    <a
+                      href="https://sk03nf-yp.myshopify.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block bg-gold-500 hover:bg-gold-600 text-black px-6 py-3 rounded-md font-medium cursor-hover transition-colors"
+                    >
                       Comprar Ahora
-                    </Button>
+                    </a>
                   </div>
 
                   <div className="bg-gold-950/30 p-6 rounded-lg border border-gold-900/30 mb-8">

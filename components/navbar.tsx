@@ -15,6 +15,7 @@ const navLinks = [
   { name: "Nuestro Café", href: "/coffee" }, // Ahora incluirá la ficha técnica
   { name: "Herencia Maya", href: "/heritage" }, // Incluirá aspectos de sostenibilidad
   { name: "Contacto", href: "/contact" },
+  { name: "Tienda", href: "https://store.lakobacoffee.com/", external: true },
 ]
 
 export default function Navbar() {
@@ -72,25 +73,48 @@ export default function Navbar() {
             <ul className="flex space-x-12">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm tracking-wide text-gold-100 hover:text-gold-400 transition-colors relative cursor-hover"
-                    onMouseEnter={() => setHoveredItem(link.name)}
-                    onMouseLeave={() => setHoveredItem(null)}
-                    onClick={handleNavClick}
-                  >
-                    {link.name}
-                    {hoveredItem === link.name && (
-                      <motion.div
-                        className="absolute -bottom-1 left-0 w-full h-[1px] bg-gold-500"
-                        layoutId="navIndicator"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      />
-                    )}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      className="text-sm tracking-wide text-gold-100 hover:text-gold-400 transition-colors relative cursor-hover"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onMouseEnter={() => setHoveredItem(link.name)}
+                      onMouseLeave={() => setHoveredItem(null)}
+                    >
+                      {link.name}
+                      {hoveredItem === link.name && (
+                        <motion.div
+                          className="absolute -bottom-1 left-0 w-full h-[1px] bg-gold-500"
+                          layoutId="navIndicator"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                        />
+                      )}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-sm tracking-wide text-gold-100 hover:text-gold-400 transition-colors relative cursor-hover"
+                      onMouseEnter={() => setHoveredItem(link.name)}
+                      onMouseLeave={() => setHoveredItem(null)}
+                      onClick={handleNavClick}
+                    >
+                      {link.name}
+                      {hoveredItem === link.name && (
+                        <motion.div
+                          className="absolute -bottom-1 left-0 w-full h-[1px] bg-gold-500"
+                          layoutId="navIndicator"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                        />
+                      )}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -150,13 +174,24 @@ export default function Navbar() {
                       transition: { duration: 0.3, delay: 0.1 + i * 0.1 },
                     }}
                   >
-                    <Link
-                      href={link.href}
-                      className="text-gold-300 text-2xl font-light tracking-wide hover:text-gold-500 transition-colors cursor-hover"
-                      onClick={handleNavClick}
-                    >
-                      {link.name}
-                    </Link>
+                    {link.external ? (
+                      <a
+                        href={link.href}
+                        className="text-gold-300 text-2xl font-light tracking-wide hover:text-gold-500 transition-colors cursor-hover"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-gold-300 text-2xl font-light tracking-wide hover:text-gold-500 transition-colors cursor-hover"
+                        onClick={handleNavClick}
+                      >
+                        {link.name}
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
               </nav>

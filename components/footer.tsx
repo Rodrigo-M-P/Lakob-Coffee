@@ -8,7 +8,10 @@ import { Instagram } from "lucide-react"
 const footerLinks = [
   {
     title: "Tienda",
-    links: [{ name: "Nuestro Café", href: "/coffee" }],
+    links: [
+      { name: "Nuestro Café", href: "/coffee" },
+      { name: "Tienda Online", href: "https://store.lakobacoffee.com/", external: true },
+    ],
   },
   {
     title: "Empresa",
@@ -78,13 +81,24 @@ export default function Footer() {
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-gold-100 hover:text-gold-400 transition-colors cursor-hover"
-                      onClick={handleLinkClick}
-                    >
-                      {link.name}
-                    </Link>
+                    {link.external ? (
+                      <a
+                        href={link.href}
+                        className="text-gold-100 hover:text-gold-400 transition-colors cursor-hover"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-gold-100 hover:text-gold-400 transition-colors cursor-hover"
+                        onClick={handleLinkClick}
+                      >
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

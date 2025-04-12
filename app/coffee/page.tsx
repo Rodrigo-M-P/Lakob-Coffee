@@ -2,15 +2,17 @@
 
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
-import { Leaf, Coffee, Heart } from "lucide-react"
+import { useRef, useState } from "react"
+import { Leaf, Coffee } from "lucide-react"
 
 import RevealText from "@/components/reveal-text"
 import ImpactSection from "@/components/impact-section"
 import CoffeeCategoriesCarousel from "@/components/coffee-categories-carousel"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function CoffeePage() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [activeTab, setActiveTab] = useState("caracteristicas")
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -41,8 +43,8 @@ export default function CoffeePage() {
             </RevealText>
             <RevealText delay={0.1}>
               <p className="text-xl text-gold-100">
-                Café excepcional de origen único de las tierras altas de la región maya. Cultivado a 1400 metros sobre
-                el nivel del mar para un desarrollo perfecto del sabor.
+                Café excepcional de origen único de las tierras altas de Chiapas, cultivado a 1400 metros sobre el nivel
+                del mar.
               </p>
             </RevealText>
           </motion.div>
@@ -51,7 +53,7 @@ export default function CoffeePage() {
 
       <section className="py-24">
         <div className="container">
-          {/* Primero: Sección del producto "Nuestro Café" */}
+          {/* Producto principal simplificado */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -92,8 +94,8 @@ export default function CoffeePage() {
                   <p className="text-2xl text-gold-500 font-medium mb-6">$14.99</p>
 
                   <p className="text-gold-100 mb-8">
-                    Nuestro café insignia con notas de chocolate y nuez. Una experiencia sensorial única que refleja la
-                    rica tradición cafetalera de las tierras altas de la región maya.
+                    Nuestro café insignia con notas de chocolate y nuez. Una experiencia sensorial única de las tierras
+                    altas de Chiapas.
                   </p>
 
                   <div className="mb-8">
@@ -107,49 +109,58 @@ export default function CoffeePage() {
                     </a>
                   </div>
 
-                  <div className="bg-gold-950/30 p-6 rounded-lg border border-gold-900/30 mb-8">
-                    <div className="flex items-center mb-4">
-                      <Coffee className="h-5 w-5 text-gold-500 mr-2" />
-                      <h3 className="text-xl font-light text-gold-300">Características</h3>
-                    </div>
+                  {/* Características en pestañas para mejor organización */}
+                  <Tabs defaultValue="caracteristicas" className="w-full" onValueChange={setActiveTab}>
+                    <TabsList className="bg-gold-900/30 border-gold-800/50">
+                      <TabsTrigger
+                        value="caracteristicas"
+                        className="data-[state=active]:bg-gold-800 data-[state=active]:text-gold-100"
+                      >
+                        Características
+                      </TabsTrigger>
+                      <TabsTrigger
+                        value="perfil"
+                        className="data-[state=active]:bg-gold-800 data-[state=active]:text-gold-100"
+                      >
+                        Perfil Sensorial
+                      </TabsTrigger>
+                      <TabsTrigger
+                        value="cultivo"
+                        className="data-[state=active]:bg-gold-800 data-[state=active]:text-gold-100"
+                      >
+                        Cultivo
+                      </TabsTrigger>
+                    </TabsList>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-3">
+                    <TabsContent
+                      value="caracteristicas"
+                      className="bg-gold-950/30 p-6 rounded-lg border border-gold-900/30 mt-4"
+                    >
+                      <div className="grid grid-cols-2 gap-4">
                         <div className="flex justify-between border-b border-gold-800/30 pb-1">
                           <span className="text-gold-300 font-medium">Variedades:</span>
                           <span className="text-gold-100">Catimor, Sarchimor</span>
-                        </div>
-                        <div className="flex justify-between border-b border-gold-800/30 pb-1">
-                          <span className="text-gold-300 font-medium">Selección:</span>
-                          <span className="text-gold-100">Europea</span>
                         </div>
                         <div className="flex justify-between border-b border-gold-800/30 pb-1">
                           <span className="text-gold-300 font-medium">Proceso:</span>
                           <span className="text-gold-100">Lavado</span>
                         </div>
                         <div className="flex justify-between border-b border-gold-800/30 pb-1">
-                          <span className="text-gold-300 font-medium">Criba:</span>
-                          <span className="text-gold-100">14</span>
-                        </div>
-                        <div className="flex justify-between border-b border-gold-800/30 pb-1">
                           <span className="text-gold-300 font-medium">Altura:</span>
                           <span className="text-gold-100">1200-1400 msnm</span>
-                        </div>
-                      </div>
-
-                      <div className="space-y-3">
-                        <div className="flex justify-between border-b border-gold-800/30 pb-1">
-                          <span className="text-gold-300 font-medium">Densidad:</span>
-                          <span className="text-gold-100">706 g/lt</span>
-                        </div>
-                        <div className="flex justify-between border-b border-gold-800/30 pb-1">
-                          <span className="text-gold-300 font-medium">Rendimiento:</span>
-                          <span className="text-gold-100">56.05 qq/kg</span>
                         </div>
                         <div className="flex justify-between border-b border-gold-800/30 pb-1">
                           <span className="text-gold-300 font-medium">Humedad:</span>
                           <span className="text-gold-100">11.5%</span>
                         </div>
+                      </div>
+                    </TabsContent>
+
+                    <TabsContent
+                      value="perfil"
+                      className="bg-gold-950/30 p-6 rounded-lg border border-gold-900/30 mt-4"
+                    >
+                      <div className="space-y-3">
                         <div className="flex justify-between border-b border-gold-800/30 pb-1">
                           <span className="text-gold-300 font-medium">Cuerpo:</span>
                           <span className="text-gold-100">Medio</span>
@@ -158,28 +169,38 @@ export default function CoffeePage() {
                           <span className="text-gold-300 font-medium">Acidez:</span>
                           <span className="text-gold-100">Media</span>
                         </div>
+                        <div className="flex justify-between border-b border-gold-800/30 pb-1">
+                          <span className="text-gold-300 font-medium">Olfato:</span>
+                          <span className="text-gold-100">Notas de chocolate y nuez</span>
+                        </div>
+                        <div className="flex justify-between items-start border-b border-gold-800/30 pb-1">
+                          <span className="text-gold-300 font-medium">Gusto:</span>
+                          <span className="text-gold-100">Nueces, avellana y chocolate con resabio a cacao</span>
+                        </div>
                       </div>
-                    </div>
+                    </TabsContent>
 
-                    <div className="mt-4 space-y-3">
-                      <div className="flex justify-between border-b border-gold-800/30 pb-1">
-                        <span className="text-gold-300 font-medium">Olfato:</span>
-                        <span className="text-gold-100">Notas de chocolate y nuez</span>
+                    <TabsContent
+                      value="cultivo"
+                      className="bg-gold-950/30 p-6 rounded-lg border border-gold-900/30 mt-4"
+                    >
+                      <div className="space-y-3">
+                        <p className="text-gold-100">
+                          Cultivado bajo sombra de árboles nativos como Tzelel, Chalum e Ingas.
+                        </p>
+                        <p className="text-gold-100">
+                          100% orgánico, sin fertilizantes químicos. Utilizamos compostaje natural y humus de lombriz.
+                        </p>
+                        <p className="text-gold-100">Cosechado a mano, seleccionando solo los granos más maduros.</p>
                       </div>
-                      <div className="flex justify-between items-start border-b border-gold-800/30 pb-1">
-                        <span className="text-gold-300 font-medium">Gusto:</span>
-                        <span className="text-gold-100 text-right max-w-[70%]">
-                          Sabor a nueces, avellana y chocolate con una acidez media, cuerpo cremoso y un resabio a cacao
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                    </TabsContent>
+                  </Tabs>
                 </motion.div>
               </div>
             </div>
           </motion.div>
 
-          {/* Segundo: Sección "La Diferencia Lakobá" */}
+          {/* Sección "La Diferencia Lakobá" simplificada */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -189,28 +210,27 @@ export default function CoffeePage() {
           >
             <h2 className="text-3xl font-light text-gold-300 mb-6">La Diferencia Lakobá</h2>
             <p className="text-gold-100 max-w-3xl mx-auto mb-8">
-              Lo que hace especial a nuestro café no es solo dónde se cultiva, sino cómo se cultiva, cosecha y procesa.
-              Cada paso en nuestra producción está guiado por un compromiso con la calidad, la sostenibilidad y el
-              respeto por las tradiciones indigenas.
+              Lo que hace especial a nuestro café es cómo se cultiva, cosecha y procesa, guiado por un compromiso con la
+              calidad y sostenibilidad.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
             {[
               {
-                title: "Excelencia de Origen Único",
+                title: "Origen Único",
                 description:
-                  "Nuestro café proviene exclusivamente de las tierras altas de la región maya, asegurando una calidad consistente y perfiles de sabor que reflejan este terroir único.",
+                  "Exclusivamente de las tierras altas de Chiapas, asegurando perfiles de sabor que reflejan este terroir único.",
               },
               {
                 title: "Procesamiento Tradicional",
                 description:
-                  "Utilizamos métodos de procesamiento tradicionales que se han perfeccionado a lo largo de generaciones, combinando técnicas ancestrales con estándares modernos de calidad.",
+                  "Métodos perfeccionados a lo largo de generaciones, combinando técnicas ancestrales con estándares modernos.",
               },
               {
                 title: "Tostado en Pequeños Lotes",
                 description:
-                  "Nuestro café se tuesta en pequeños lotes para garantizar un desarrollo óptimo del sabor y frescura, con cada lote cuidadosamente monitoreado por nuestros maestros tostadores.",
+                  "Garantizamos desarrollo óptimo del sabor y frescura, con cada lote monitoreado por maestros tostadores.",
               },
             ].map((feature, index) => (
               <motion.div
@@ -231,8 +251,8 @@ export default function CoffeePage() {
 
       <CoffeeCategoriesCarousel />
 
-      {/* Sección de Ficha Técnica integrada */}
-      <section className="py-24 bg-gold-950/90 mayan-pattern">
+      {/* Sección de Ficha Técnica condensada */}
+      <section id="calidad-medio-ambiente" className="py-24 bg-gold-950/90 mayan-pattern">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -241,16 +261,14 @@ export default function CoffeePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-gold-300 mb-6">Ficha Técnica</h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gold-300 mb-6">Compromiso con la Calidad</h2>
             <p className="text-gold-100 max-w-3xl mx-auto">
-              Conoce en detalle las características de nuestro café, nuestro compromiso con la calidad, el medio
-              ambiente y las comunidades indígenas.
+              Nuestro café refleja nuestro compromiso con la excelencia, el medio ambiente y las comunidades locales.
             </p>
           </motion.div>
 
-          {/* Sección 1: Compromiso con la Calidad y el Medio Ambiente */}
+          {/* Sección condensada */}
           <motion.div
-            id="calidad-medio-ambiente"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -263,25 +281,21 @@ export default function CoffeePage() {
                   <div className="w-12 h-12 bg-gold-900/30 rounded-full flex items-center justify-center mr-4">
                     <Leaf className="h-6 w-6 text-gold-500" />
                   </div>
-                  <h3 className="text-2xl font-light text-gold-300">Compromiso con la Calidad y el Medio Ambiente</h3>
+                  <h3 className="text-2xl font-light text-gold-300">Calidad y Medio Ambiente</h3>
                 </div>
 
                 <div className="space-y-4 text-gold-100">
                   <p>
-                    El café que distribuimos proviene de fincas comprometidas con la siembra, cosecha y procesamiento de
-                    granos de la más alta calidad, así como con la producción de otros cultivos 100% orgánicos. Estas
-                    fincas se ubican en las montañas de la región maya, en altitudes entre 1000 y 1400 msnm, asegurando
-                    un café de altura con un perfil sensorial excepcional.
+                    Nuestro café proviene de fincas comprometidas con la producción orgánica en las montañas de Chiapas,
+                    a altitudes entre 1000 y 1400 msnm.
                   </p>
                   <p>
-                    Los cafetales crecen a la sombra de especies como Tzelel, Chalum y distintas variedades de Ingas y
-                    plátanos. Esta técnica permite conservar la biodiversidad, proporcionando hábitat a diversas
-                    especies de aves y otros animales de la región.
+                    Los cafetales crecen bajo sombra, conservando la biodiversidad y proporcionando hábitat a diversas
+                    especies locales.
                   </p>
                   <p>
-                    Para garantizar un producto 100% orgánico, no se utilizan fertilizantes químicos. En su lugar, se
-                    elaboran compostas con la pulpa del café y se produce humus de lombriz, empleado como fertilizante
-                    natural, promoviendo así una agricultura sostenible y respetuosa con el medio ambiente.
+                    Utilizamos solo fertilizantes naturales como compost de pulpa de café y humus de lombriz,
+                    promoviendo una agricultura sostenible.
                   </p>
                 </div>
               </div>
@@ -297,7 +311,7 @@ export default function CoffeePage() {
             </div>
           </motion.div>
 
-          {/* Sección 2: Experiencia Sensorial del Café */}
+          {/* Sección de Experiencia Sensorial simplificada */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -305,20 +319,19 @@ export default function CoffeePage() {
             viewport={{ once: true }}
             className="mb-24 bg-black/40 p-12 rounded-lg border border-gold-900/30"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-8">
-              <div>
-                <div className="flex items-center mb-8">
-                  <div className="w-12 h-12 bg-gold-900/50 rounded-full flex items-center justify-center mr-4">
-                    <Coffee className="h-6 w-6 text-gold-500" />
-                  </div>
-                  <h3 className="text-2xl font-light text-gold-300">Experiencia Sensorial del Café</h3>
-                </div>
-
-                <p className="text-gold-100 mb-8">
-                  El café que ofrecemos es una combinación de las mejores variedades, seleccionadas cuidadosamente para
-                  brindar una experiencia inigualable.
-                </p>
+            <div className="flex items-center mb-8">
+              <div className="w-12 h-12 bg-gold-900/50 rounded-full flex items-center justify-center mr-4">
+                <Coffee className="h-6 w-6 text-gold-500" />
               </div>
+              <h3 className="text-2xl font-light text-gold-300">Experiencia Sensorial</h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <p className="text-gold-100">
+                Nuestro café ofrece un perfil sensorial único con notas de chocolate y nuez, cuerpo medio y acidez
+                equilibrada. El proceso de lavado resalta la limpieza de su sabor, mientras que el tostado medio oscuro
+                desarrolla sus aromas complejos.
+              </p>
 
               <div className="relative h-[300px] rounded-lg overflow-hidden">
                 <Image
@@ -327,111 +340,6 @@ export default function CoffeePage() {
                   fill
                   className="object-cover"
                 />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <div className="flex justify-between border-b border-gold-800/30 pb-2">
-                  <span className="text-gold-300 font-medium">Variedades:</span>
-                  <span className="text-gold-100">Catimor, Sarchimor</span>
-                </div>
-                <div className="flex justify-between border-b border-gold-800/30 pb-2">
-                  <span className="text-gold-300 font-medium">Selección:</span>
-                  <span className="text-gold-100">Europea</span>
-                </div>
-                <div className="flex justify-between border-b border-gold-800/30 pb-2">
-                  <span className="text-gold-300 font-medium">Proceso:</span>
-                  <span className="text-gold-100">Lavado</span>
-                </div>
-                <div className="flex justify-between border-b border-gold-800/30 pb-2">
-                  <span className="text-gold-300 font-medium">Criba:</span>
-                  <span className="text-gold-100">14</span>
-                </div>
-                <div className="flex justify-between border-b border-gold-800/30 pb-2">
-                  <span className="text-gold-300 font-medium">Altura:</span>
-                  <span className="text-gold-100">1200-1400 msnm</span>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex justify-between border-b border-gold-800/30 pb-2">
-                  <span className="text-gold-300 font-medium">Densidad:</span>
-                  <span className="text-gold-100">706 g/lt</span>
-                </div>
-                <div className="flex justify-between border-b border-gold-800/30 pb-2">
-                  <span className="text-gold-300 font-medium">Rendimiento:</span>
-                  <span className="text-gold-100">56.05 qq/kg</span>
-                </div>
-                <div className="flex justify-between border-b border-gold-800/30 pb-2">
-                  <span className="text-gold-300 font-medium">Humedad:</span>
-                  <span className="text-gold-100">11.5%</span>
-                </div>
-                <div className="flex justify-between border-b border-gold-800/30 pb-2">
-                  <span className="text-gold-300 font-medium">Cuerpo:</span>
-                  <span className="text-gold-100">Medio</span>
-                </div>
-                <div className="flex justify-between border-b border-gold-800/30 pb-2">
-                  <span className="text-gold-300 font-medium">Acidez:</span>
-                  <span className="text-gold-100">Media</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 space-y-4">
-              <div className="flex justify-between border-b border-gold-800/30 pb-2">
-                <span className="text-gold-300 font-medium">Olfato:</span>
-                <span className="text-gold-100">Notas de chocolate y nuez</span>
-              </div>
-              <div className="flex justify-between items-start border-b border-gold-800/30 pb-2">
-                <span className="text-gold-300 font-medium">Gusto:</span>
-                <span className="text-gold-100 text-right max-w-[70%]">
-                  Sabor a nueces, avellana y chocolate con una acidez media, cuerpo cremoso y un resabio a cacao.
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Sección 3: Apoyo a las Lenguas Indígenas */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="order-2 md:order-1 relative h-[400px] rounded-lg overflow-hidden">
-                <Image
-                  src="/images/coffee-cup-beans.jpeg"
-                  alt="Taza de café sobre granos de café"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="order-1 md:order-2">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gold-900/30 rounded-full flex items-center justify-center mr-4">
-                    <Heart className="h-6 w-6 text-gold-500" />
-                  </div>
-                  <h3 className="text-2xl font-light text-gold-300">Nuestro Enfoque Sostenible</h3>
-                </div>
-
-                <div className="space-y-4 text-gold-100">
-                  <p>
-                    Creemos firmemente en la importancia de preservar la riqueza cultural de México. Por ello,
-                    destinamos el 10% de nuestras ventas al apoyo de Baktùn, dedicada a la conservación de las lenguas
-                    indígenas del país.
-                  </p>
-                  <p>
-                    A través de estas contribuciones, impulsamos proyectos que refuercen la identidad lingüística y el
-                    patrimonio cultural de los pueblos originarios, fomentando así el respeto y la diversidad.
-                  </p>
-                  <p>
-                    Nuestro compromiso va más allá de ofrecer un café excepcional; buscamos contribuir activamente a la
-                    preservación de la riqueza cultural que hace único a nuestro país.
-                  </p>
-                </div>
               </div>
             </div>
           </motion.div>

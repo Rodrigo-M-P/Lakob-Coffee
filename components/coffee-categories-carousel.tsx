@@ -5,7 +5,7 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Coffee, Leaf, Mountain, Globe } from "lucide-react"
 
-// Categorías para el carrusel con iconos
+// Categorías simplificadas
 const categories = [
   {
     title: "Tueste Medio Oscuro",
@@ -24,7 +24,7 @@ const categories = [
   },
   {
     title: "Café de Origen Único",
-    description: "Exclusivamente de las tierras altas de la región maya",
+    description: "Exclusivamente de las tierras altas de Chiapas",
     icon: <Globe className="h-10 w-10 text-gold-500" />,
   },
 ]
@@ -33,17 +33,14 @@ export default function CoffeeCategoriesCarousel() {
   const [current, setCurrent] = useState(0)
   const [autoplay, setAutoplay] = useState(true)
 
-  // Función para ir a la siguiente categoría
   const nextSlide = () => {
     setCurrent(current === categories.length - 1 ? 0 : current + 1)
   }
 
-  // Función para ir a la categoría anterior
   const prevSlide = () => {
     setCurrent(current === 0 ? categories.length - 1 : current - 1)
   }
 
-  // Autoplay
   useEffect(() => {
     let interval: NodeJS.Timeout
 
@@ -58,10 +55,8 @@ export default function CoffeeCategoriesCarousel() {
     }
   }, [current, autoplay])
 
-  // Pausar autoplay al interactuar
   const handleInteraction = () => {
     setAutoplay(false)
-    // Reanudar después de 10 segundos de inactividad
     setTimeout(() => setAutoplay(true), 10000)
   }
 
@@ -79,9 +74,7 @@ export default function CoffeeCategoriesCarousel() {
               Nuestra Selección de Café
             </h2>
             <p className="text-gold-100 mb-8">
-              Descubre las características que hacen único a nuestro café, desde el método de cultivo hasta el proceso
-              de tostado. Cada grano es seleccionado cuidadosamente para garantizar una experiencia sensorial
-              excepcional que refleja la rica tradición cafetalera de las tierras altas de la región maya.
+              Descubre las características que hacen único a nuestro café, desde el cultivo hasta el tostado.
             </p>
             <div className="flex flex-wrap gap-4">
               {categories.map((category, index) => (
@@ -128,12 +121,12 @@ export default function CoffeeCategoriesCarousel() {
               transition={{ duration: 0.5 }}
               className="bg-black/40 p-12 rounded-lg border border-gold-800/30 text-center"
             >
+              <div className="flex justify-center mb-6">{categories[current].icon}</div>
               <h3 className="text-3xl md:text-4xl font-light text-gold-300 mb-6">{categories[current].title}</h3>
               <p className="text-gold-100 text-xl max-w-2xl mx-auto">{categories[current].description}</p>
             </motion.div>
           </AnimatePresence>
 
-          {/* Controles del carrusel */}
           <button
             className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors z-10"
             onClick={() => {

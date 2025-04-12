@@ -15,9 +15,8 @@ export default function ImpactSection() {
           </RevealText>
           <RevealText delay={0.1}>
             <p className="text-champagne-100 max-w-3xl mx-auto">
-              Lo que realmente hace especial a nuestro café va más allá de su sabor excepcional. Con cada taza, estás
-              contribuyendo a la preservación del patrimonio cultural maya y apoyando a las comunidades que hacen
-              posible nuestro café.
+              Con cada taza, contribuyes a la preservación del patrimonio cultural maya y al apoyo de las comunidades
+              locales.
             </p>
           </RevealText>
         </div>
@@ -27,20 +26,19 @@ export default function ImpactSection() {
             {
               icon: <Heart className="h-8 w-8 text-gold-400" />,
               title: "Preservación Cultural",
-              description:
-                "Una parte de cada compra va directamente a iniciativas que preservan y promueven los idiomas, artes y tradiciones mayas para las generaciones futuras.",
+              description: "Apoyamos iniciativas que preservan y promueven los idiomas, artes y tradiciones mayas.",
             },
             {
               icon: <Users className="h-8 w-8 text-gold-400" />,
               title: "Apoyo Comunitario",
               description:
-                "Invertimos en las comunidades que cultivan nuestro café, financiando educación, salud y proyectos de infraestructura que mejoran la calidad de vida.",
+                "Invertimos en educación, salud y proyectos de infraestructura que mejoran la calidad de vida.",
             },
             {
               icon: <BookOpen className="h-8 w-8 text-gold-400" />,
               title: "Iniciativas Educativas",
               description:
-                "Patrocinamos programas educativos que enseñan tanto a los jóvenes locales como al mundo en general sobre la rica historia y las contribuciones continuas de la civilización maya.",
+                "Patrocinamos programas que enseñan sobre la rica historia y las contribuciones de la civilización maya.",
             },
           ].map((item, index) => (
             <motion.div

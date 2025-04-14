@@ -45,7 +45,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-gold-300 font-medium mb-1">Teléfono</h3>
-                    <p className="text-gold-100">+1 (555) 123-4567</p>
+                    <p className="text-gold-100">+39 344 612 8400</p>
                   </div>
                 </div>
 
@@ -54,7 +54,7 @@ export default function ContactPage() {
                     <MapPin className="h-5 w-5 text-gold-500" />
                   </div>
                   <div>
-                    <h3 className="text-gold-300 font-medium mb-1">Dirección</h3>
+                    <h3 className="text-gold-300 font-medium mb-1">Ubicación </h3>
                     <p className="text-gold-100">
                       Lakobá Coffee
                       <br />

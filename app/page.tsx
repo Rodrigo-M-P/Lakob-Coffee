@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -65,35 +64,6 @@ export default function Home() {
       <GlobalPresence />
 
       <MayaCoSection />
-
-      {/* Sección de cultivo sostenible simplificada */}
-      <section className="bg-black py-24 md:py-32 mayan-pattern">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-6 text-gold-300">Cultivo Sostenible</h2>
-              <p className="text-gold-100 mb-8">
-                Nuestro café crece bajo sombra en un ecosistema diverso que protege la biodiversidad y garantiza granos
-                de la más alta calidad.
-              </p>
-              <Link href="/coffee#calidad-medio-ambiente">
-                <Button className="group bg-gold-500 text-black hover:bg-gold-600 cursor-hover">
-                  Conoce Nuestras Prácticas
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-            </div>
-            <div className="relative h-[400px] md:h-[500px]">
-              <Image
-                src="/images/coffee-plantation.jpeg"
-                alt="Cultivo sostenible de café"
-                fill
-                className="object-cover rounded-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Se eliminó el componente Newsletter aquí */}
     </main>

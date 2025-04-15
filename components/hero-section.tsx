@@ -3,8 +3,6 @@
 import { useRef, useEffect, useState } from "react"
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowRight } from "lucide-react"
-import MagneticButton from "./magnetic-button"
 import RevealText from "./reveal-text"
 
 export default function HeroSection() {
@@ -91,21 +89,7 @@ export default function HeroSection() {
             </p>
           </RevealText>
 
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 3.1 }}
-          >
-            <MagneticButton  href="/coffee" className="bg-gold-500 hover:bg-gold-600 text-black px-6 py-3 rounded-md font-medium flex items-center justify-center cursor-hover">
-              Ordenar Ahora
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </MagneticButton>
-
-            <MagneticButton href="/about" className="bg-transparent text-gold-100 border border-gold-500 hover:bg-gold-900/30 px-6 py-3 rounded-md font-medium cursor-hover">
-              Conoce Nuestra Historia
-            </MagneticButton>
-          </motion.div>
+          {/* Se eliminaron los botones de acción aquí */}
         </motion.div>
       </div>
 

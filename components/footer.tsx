@@ -22,10 +22,7 @@ const footerLinks = [
   },
   {
     title: "Soporte",
-    links: [
-      { name: "Contáctanos", href: "/contact" },
-      { name: "Política de Privacidad", href: "/privacy" },
-    ],
+    links: [{ name: "Contáctanos", href: "/contact" }],
   },
 ]
 

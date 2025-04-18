@@ -227,3 +227,66 @@ html {
 .cursor-hover {
   cursor: none;
 }
+
+/* Mejoras para móvil */
+@media (max-width: 768px) {
+  /* Ajustes de espaciado para móvil */
+  section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Mejora de contraste para textos en móvil */
+  .text-gold-100 {
+    color: rgba(253, 236, 200, 0.95);
+  }
+
+  .text-gold-300 {
+    color: rgba(249, 200, 29, 0.9);
+  }
+
+  /* Mejora de fondos para móvil */
+  .bg-gold-950\/20,
+  .bg-gold-950\/30,
+  .bg-gold-950\/90 {
+    background-color: rgba(20, 15, 0, 0.9);
+  }
+
+  .bg-black\/30,
+  .bg-black\/40,
+  .bg-black\/50,
+  .bg-black\/80,
+  .bg-black\/95 {
+    background-color: rgba(0, 0, 0, 0.95);
+  }
+
+  /* Mejora de bordes para móvil */
+  .border-gold-900\/30,
+  .border-gold-800\/30,
+  .border-gold-800\/50 {
+    border-color: rgba(249, 200, 29, 0.2);
+  }
+
+  /* Ajustes de tamaño para imágenes en móvil */
+  .h-\[300px\],
+  .h-\[400px\],
+  .h-\[500px\] {
+    height: 300px;
+  }
+
+  /* Mejora de sombras para tarjetas en móvil */
+  .shadow-xl {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.8), 0 8px 10px -6px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Mejora de botones para móvil */
+  .bg-gold-500 {
+    background-color: rgba(249, 200, 29, 1);
+  }
+
+  /* Mejora de padding para contenedores en móvil */
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}

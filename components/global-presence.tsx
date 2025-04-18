@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 
 const locations = [
   {
@@ -45,25 +45,28 @@ export default function GlobalPresence() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+          {/* Contenedor de imagen simplificado para mejor compatibilidad móvil */}
           <div className="relative h-[200px] md:h-[500px] bg-black rounded-lg overflow-hidden border border-gold-900/30">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeLocation.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+            {/* Renderizar todas las imágenes pero mostrar solo la activa */}
+            {locations.map((location) => (
+              <div
+                key={location.id}
                 className="absolute inset-0"
+                style={{
+                  opacity: activeLocation.id === location.id ? 1 : 0,
+                  transition: "opacity 0.5s ease-in-out",
+                }}
               >
                 <Image
-                  src={activeLocation.image || "/placeholder.svg"}
-                  alt={activeLocation.name}
+                  src={location.image || "/placeholder.svg"}
+                  alt={location.name}
                   fill
                   className="object-cover"
+                  priority={activeLocation.id === location.id}
                 />
                 <div className="absolute inset-0 bg-black/40"></div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            ))}
           </div>
 
           <div className="bg-black p-4 md:p-8 rounded-lg border border-gold-900/30">

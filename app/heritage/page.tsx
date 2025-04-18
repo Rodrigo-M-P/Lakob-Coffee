@@ -2,64 +2,38 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef, useEffect, useState } from "react"
+import { motion } from "framer-motion"
 import { Leaf } from "lucide-react"
 import RevealText from "@/components/reveal-text"
 
 export default function HeritagePage() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [isMobile, setIsMobile] = useState(false)
-
-  // Detectar si es dispositivo móvil
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768)
-    }
-
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-
-    return () => {
-      window.removeEventListener("resize", checkMobile)
-    }
-  }, [])
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  })
-
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
-  const y = useTransform(scrollYProgress, [0, 0.2], [0, 100])
-
   return (
     <main className="bg-black min-h-screen">
-      <section ref={containerRef} className="relative h-[70vh] flex items-center overflow-hidden bg-black">
-        <motion.div className="absolute inset-0 z-0" style={isMobile ? { opacity: 1 } : { opacity }}>
-          <Image
-            src="/images/chichen-itza.jpeg"
-            alt="Pirámide maya de Chichén Itzá"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </motion.div>
-
-        <div className="container relative z-10">
-          <motion.div className="max-w-3xl" style={isMobile ? {} : { y }}>
-            <RevealText>
-              <h1 className="text-4xl md:text-6xl font-light text-gold-300 mb-6">Herencia Maya</h1>
-            </RevealText>
-            <RevealText delay={0.1}>
-              <p className="text-xl text-gold-100">
-                Honrando el rico legado cultural de la civilización maya a través de nuestro café.
-              </p>
-            </RevealText>
-          </motion.div>
+      {/* Header con imagen estática */}
+      <div className="header-image-container">
+        <Image
+          src="/images/chichen-itza.jpeg"
+          alt="Pirámide maya de Chichén Itzá"
+          fill
+          className="header-image"
+          priority
+        />
+        <div className="header-overlay"></div>
+        <div className="header-content">
+          <div className="container">
+            <div className="max-w-3xl">
+              <RevealText>
+                <h1 className="text-4xl md:text-6xl font-light text-gold-300 mb-6">Herencia Maya</h1>
+              </RevealText>
+              <RevealText delay={0.1}>
+                <p className="text-xl text-gold-100">
+                  Honrando el rico legado cultural de la civilización maya a través de nuestro café.
+                </p>
+              </RevealText>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* Sección "La Civilización Maya" reducida */}
       <section className="py-24">

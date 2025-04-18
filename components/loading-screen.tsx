@@ -76,14 +76,19 @@ export default function LoadingScreen() {
             LAKOBÁ
           </motion.p>
 
-          <motion.div className="w-48 h-[1px] bg-gold-900/30 mt-8 relative overflow-hidden">
+          {/* Barra de progreso mejorada */}
+          <div className="w-48 h-4 bg-gold-900/30 mt-8 rounded-full overflow-hidden relative">
             <motion.div
               className="h-full bg-gold-500"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ ease: "easeInOut" }}
+              style={{
+                boxShadow: "0 0 10px 1px rgba(249, 200, 29, 0.7)",
+                borderRadius: "9999px",
+              }}
             />
-          </motion.div>
+          </div>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gold-500/70 mt-2 text-xs">
             {progress}%
           </motion.p>

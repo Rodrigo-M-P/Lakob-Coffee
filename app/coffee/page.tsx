@@ -1,70 +1,46 @@
 "use client"
 
 import Image from "next/image"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef, useState, useEffect } from "react"
+import { motion } from "framer-motion"
 import { Leaf, Coffee } from "lucide-react"
 
 import RevealText from "@/components/reveal-text"
 import ImpactSection from "@/components/impact-section"
 import CoffeeCategoriesCarousel from "@/components/coffee-categories-carousel"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useState } from "react"
 
 export default function CoffeePage() {
-  const containerRef = useRef<HTMLDivElement>(null)
   const [activeTab, setActiveTab] = useState("caracteristicas")
-  const [isMobile, setIsMobile] = useState(false)
-
-  // Detectar si es dispositivo móvil
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768)
-    }
-
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-
-    return () => {
-      window.removeEventListener("resize", checkMobile)
-    }
-  }, [])
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  })
-
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
-  const y = useTransform(scrollYProgress, [0, 0.2], [0, 100])
 
   return (
     <main className="bg-black min-h-screen">
-      <section ref={containerRef} className="relative h-[70vh] flex items-center overflow-hidden bg-black">
-        <motion.div className="absolute inset-0 z-0" style={isMobile ? { opacity: 1 } : { opacity }}>
-          <Image
-            src="/images/coffee-branch-sunlight.jpeg"
-            alt="Ramas de café bajo el sol"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/30" />
-        </motion.div>
-
-        <div className="container relative z-10">
-          <motion.div className="max-w-3xl" style={isMobile ? {} : { y }}>
-            <RevealText>
-              <h1 className="text-4xl md:text-6xl font-light text-gold-300 mb-6">Nuestro Café</h1>
-            </RevealText>
-            <RevealText delay={0.1}>
-              <p className="text-xl text-gold-100">
-                Café excepcional de origen único de las tierras altas de Chiapas, cultivado a 1400 metros sobre el nivel
-                del mar.
-              </p>
-            </RevealText>
-          </motion.div>
+      {/* Header con imagen estática */}
+      <div className="header-image-container">
+        <Image
+          src="/images/coffee-branch-sunlight.jpeg"
+          alt="Ramas de café bajo el sol"
+          fill
+          className="header-image"
+          priority
+        />
+        <div className="header-overlay"></div>
+        <div className="header-content">
+          <div className="container">
+            <div className="max-w-3xl">
+              <RevealText>
+                <h1 className="text-4xl md:text-6xl font-light text-gold-300 mb-6">Nuestro Café</h1>
+              </RevealText>
+              <RevealText delay={0.1}>
+                <p className="text-xl text-gold-100">
+                  Café excepcional de origen único de las tierras altas de Chiapas, cultivado a 1400 metros sobre el
+                  nivel del mar.
+                </p>
+              </RevealText>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
       <section className="py-24">
         <div className="container">

@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button"
 const coffeeProduct = {
   id: 1,
   name: "Café Lakobá",
-  price: "$14.99",
   image: "/images/coffee-bag-open.jpeg",
   category: "Tueste Medio Oscuro",
   description:
@@ -67,7 +66,6 @@ export default function SingleCoffeeProduct() {
           </div>
 
           <h2 className="text-3xl md:text-4xl font-light text-gold-300 mb-4">{coffeeProduct.name}</h2>
-          <p className="text-2xl text-gold-500 font-medium mb-6">{coffeeProduct.price}</p>
 
           <p className="text-gold-100 mb-8">{coffeeProduct.description}</p>
 

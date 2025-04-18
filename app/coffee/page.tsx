@@ -91,7 +91,6 @@ export default function CoffeePage() {
                   </div>
 
                   <h2 className="text-3xl md:text-4xl font-light text-gold-300 mb-4">Café Lakobá</h2>
-                  <p className="text-2xl text-gold-500 font-medium mb-6">$14.99</p>
 
                   <p className="text-gold-100 mb-8">
                     Nuestro café insignia con notas de chocolate y nuez. Una experiencia sensorial única de las tierras

@@ -1,6 +1,5 @@
 import LoadingScreen from "@/components/loading-screen"
 import HeroSection from "@/components/hero-section"
-import MarqueeSection from "@/components/marquee-section"
 import FeaturedProducts from "@/components/featured-products"
 import StorySection from "@/components/story-section"
 import GlobalPresence from "@/components/global-presence"
@@ -12,8 +11,6 @@ export default function Home() {
       <LoadingScreen />
 
       <HeroSection />
-
-      <MarqueeSection />
 
       {/* Sección optimizada con menos texto */}
       <section className="container pt-32 pb-24 md:pt-40 md:pb-32">

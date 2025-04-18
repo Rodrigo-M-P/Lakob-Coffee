@@ -10,7 +10,6 @@ import Link from "next/link"
 const product = {
   id: 1,
   name: "Café Lakobá",
-  price: "$15.99",
   image: "/images/lakoba-package.png",
   category: "Tueste Medio Oscuro",
   description:
@@ -55,10 +54,6 @@ export default function FeaturedProducts() {
             </div>
 
             <h3 className="text-xl md:text-4xl font-light mb-2 md:mb-4 text-gold-300">{product.name}</h3>
-
-            <div className="flex items-center mb-2 md:mb-4">
-              <p className="text-lg md:text-2xl text-gold-400 font-medium">{product.price}</p>
-            </div>
 
             <p className="text-gold-100 mb-3 md:mb-6 text-sm md:text-base">{product.description}</p>
 

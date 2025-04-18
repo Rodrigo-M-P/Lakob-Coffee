@@ -4,36 +4,18 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Leaf } from "lucide-react"
-import RevealText from "@/components/reveal-text"
+import MobileHeader from "@/components/mobile-header"
 
 export default function HeritagePage() {
   return (
     <main className="bg-black min-h-screen">
       {/* Header con imagen estática */}
-      <div className="header-image-container">
-        <Image
-          src="/images/chichen-itza.jpeg"
-          alt="Pirámide maya de Chichén Itzá"
-          fill
-          className="header-image"
-          priority
-        />
-        <div className="header-overlay"></div>
-        <div className="header-content">
-          <div className="container">
-            <div className="max-w-3xl">
-              <RevealText>
-                <h1 className="text-4xl md:text-6xl font-light text-gold-300 mb-6">Herencia Maya</h1>
-              </RevealText>
-              <RevealText delay={0.1}>
-                <p className="text-xl text-gold-100">
-                  Honrando el rico legado cultural de la civilización maya a través de nuestro café.
-                </p>
-              </RevealText>
-            </div>
-          </div>
-        </div>
-      </div>
+      <MobileHeader
+        title="Herencia Maya"
+        subtitle="Honrando el rico legado cultural de la civilización maya a través de nuestro café."
+        imageSrc="/images/chichen-itza.jpeg"
+        imageAlt="Pirámide maya de Chichén Itzá"
+      />
 
       {/* Sección "La Civilización Maya" reducida */}
       <section className="py-24">

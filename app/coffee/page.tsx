@@ -3,12 +3,11 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Leaf, Coffee } from "lucide-react"
-
-import RevealText from "@/components/reveal-text"
 import ImpactSection from "@/components/impact-section"
 import CoffeeCategoriesCarousel from "@/components/coffee-categories-carousel"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useState } from "react"
+import MobileHeader from "@/components/mobile-header"
 
 export default function CoffeePage() {
   const [activeTab, setActiveTab] = useState("caracteristicas")
@@ -16,31 +15,12 @@ export default function CoffeePage() {
   return (
     <main className="bg-black min-h-screen">
       {/* Header con imagen estática */}
-      <div className="header-image-container">
-        <Image
-          src="/images/coffee-branch-sunlight.jpeg"
-          alt="Ramas de café bajo el sol"
-          fill
-          className="header-image"
-          priority
-        />
-        <div className="header-overlay"></div>
-        <div className="header-content">
-          <div className="container">
-            <div className="max-w-3xl">
-              <RevealText>
-                <h1 className="text-4xl md:text-6xl font-light text-gold-300 mb-6">Nuestro Café</h1>
-              </RevealText>
-              <RevealText delay={0.1}>
-                <p className="text-xl text-gold-100">
-                  Café excepcional de origen único de las tierras altas de Chiapas, cultivado a 1400 metros sobre el
-                  nivel del mar.
-                </p>
-              </RevealText>
-            </div>
-          </div>
-        </div>
-      </div>
+      <MobileHeader
+        title="Nuestro Café"
+        subtitle="Café excepcional de origen único de las tierras altas de Chiapas, cultivado a 1400 metros sobre el nivel del mar."
+        imageSrc="/images/coffee-branch-sunlight.jpeg"
+        imageAlt="Ramas de café bajo el sol"
+      />
 
       <section className="py-24">
         <div className="container">

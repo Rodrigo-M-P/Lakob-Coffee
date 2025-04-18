@@ -9,7 +9,7 @@ const locations = [
     id: "mexico",
     name: "México",
     description:
-      "Nuestro origen y corazón. Trabajamos directamente con comunidades indigenas en la región para cultivar nuestro excepcional café de origen único.",
+      "Nuestro origen y corazón. En las tierras altas de Chiapas cultivamos nuestro excepcional café de origen único, respetando las tradiciones y el entorno natural de la región.",
     image: "/images/mexico.jpeg",
   },
   {
@@ -103,8 +103,8 @@ export default function GlobalPresence() {
             <div className="mt-8 pt-6 border-t border-gold-900/30">
               <p className="text-gold-100">
                 <span className="text-gold-300 font-medium">Nuestro Compromiso:</span> Parte de nuestras utilidades se
-                destina directamente a la fundación Baktùn para apoyar la preservación del patrimonio cultural maya y el
-                desarrollo de las comunidades locales.
+                destina a apoyar la preservación del patrimonio cultural maya y el desarrollo de las comunidades locales
+                en la región.
               </p>
             </div>
           </div>

@@ -255,45 +255,6 @@ export default function HeritagePage() {
           </div>
         </div>
       </section>
-
-      {/* Sección "Iniciativas de Preservación" simplificada */}
-      <section className="py-24">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl font-light text-gold-300 mb-6">Nuestras Iniciativas de Preservación</h2>
-              <p className="text-gold-100 mb-4">
-                Dedicamos parte de nuestras ganancias a preservar el patrimonio cultural maya, apoyando programas de
-                preservación lingüística, conservación arqueológica y talleres de artes tradicionales.
-              </p>
-              <p className="text-gold-100 mb-6">
-                Al elegir Lakobá, contribuyes a la preservación de una de las culturas antiguas más fascinantes del
-                mundo.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="relative h-[500px] rounded-lg overflow-hidden"
-            >
-              <Image
-                src="/images/mayan-elder.jpeg"
-                alt="Mujer maya en atuendo tradicional"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
     </main>
   )
 }

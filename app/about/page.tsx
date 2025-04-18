@@ -58,13 +58,15 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl font-light text-gold-300 mb-6">Nuestros Inicios</h2>
               <p className="text-gold-100 mb-4">
-                Lakobá nació de una profunda apreciación por la rica herencia cafetera de las tierras altas mayas y el
-                deseo de compartir este excepcional café con el mundo.
+                Lakobá nació de un sueño: descubrir y compartir con el mundo los sabores extraordinarios que emergen de
+                las tierras altas chiapanecas, donde la naturaleza, la tradición y la pasión se entrelazan para crear un
+                café verdaderamente excepcional.
               </p>
               <p className="text-gold-100">
-                Fundada en 2025 por un equipo de entusiastas del café con fuertes conexiones con las comunidades
-                indígenas, nuestra misión es celebrar la calidad excepcional del café de la región mientras preservamos
-                su patrimonio cultural.
+                Fundada en 2025 por un equipo de visionarios apasionados por el café, nuestra misión trasciende lo
+                comercial. Buscamos elevar cada taza a una experiencia que honre el legado de estas tierras ancestrales,
+                conectando a los amantes del café con los paisajes, aromas y sabores únicos que solo las montañas de
+                Chiapas pueden ofrecer.
               </p>
             </motion.div>
 
@@ -105,7 +107,7 @@ export default function AboutPage() {
               {
                 icon: <Coffee className="h-8 w-8 text-gold-500" />,
                 title: "Calidad",
-                description: "Seleccionamos cuidadosamente solo los mejores granos de las tierras altas mayas.",
+                description: "Seleccionamos cuidadosamente solo los mejores granos de nuestras tierras.",
               },
               {
                 icon: <Users className="h-8 w-8 text-gold-500" />,

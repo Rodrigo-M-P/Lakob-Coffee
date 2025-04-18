@@ -225,7 +225,7 @@ export default function CoffeePage() {
               {
                 title: "Procesamiento Tradicional",
                 description:
-                  "Métodos perfeccionados a lo largo de generaciones, combinando técnicas ancestrales con estándares modernos.",
+                  "Métodos perfeccionados a lo largo de generaciones, combinando técnicas locales con estándares modernos.",
               },
               {
                 title: "Tostado en Pequeños Lotes",

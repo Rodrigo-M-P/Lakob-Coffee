@@ -62,7 +62,7 @@ export default function Footer() {
               </p>
               <div className="flex space-x-4">
                 <Link
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/lakobamayancoffee/"
                   className="text-gold-500 hover:text-gold-300 transition-colors cursor-hover"
                 >
                   <Instagram className="h-5 w-5" />

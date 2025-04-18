@@ -27,9 +27,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+    <html lang="es" suppressHydrationWarning className="bg-black">
+      <body className={`${inter.className} bg-black`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <OptimizedCursor />
           <Navbar />
           {children}
@@ -39,9 +39,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-import "./globals.css"
-
-import "./globals.css"
-
-import "./globals.css"

@@ -32,10 +32,10 @@ export default function GlobalPresence() {
   const [activeLocation, setActiveLocation] = useState(locations[0])
 
   return (
-    <section className="bg-black py-16 md:py-32">
+    <section className="bg-black py-12 md:py-32">
       <div className="container">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-2xl md:text-5xl font-light tracking-tight mb-4 md:mb-6 text-gold-300">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-2xl md:text-5xl font-light tracking-tight mb-3 md:mb-6 text-gold-300">
             Presencia Global
           </h2>
           <p className="text-gold-100 max-w-[600px] mx-auto text-sm md:text-base">
@@ -44,8 +44,8 @@ export default function GlobalPresence() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="relative h-[300px] md:h-[500px] bg-gray-900/50 rounded-lg overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+          <div className="relative h-[200px] md:h-[500px] bg-black rounded-lg overflow-hidden border border-gold-900/30">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeLocation.id}
@@ -66,24 +66,24 @@ export default function GlobalPresence() {
             </AnimatePresence>
           </div>
 
-          <div className="bg-black/80 p-6 md:p-8 rounded-lg border border-gold-900/30">
-            <h3 className="text-xl md:text-3xl font-light mb-4 md:mb-6 text-gold-300">Nuestras Ubicaciones</h3>
+          <div className="bg-black p-4 md:p-8 rounded-lg border border-gold-900/30">
+            <h3 className="text-xl md:text-3xl font-light mb-3 md:mb-6 text-gold-300">Nuestras Ubicaciones</h3>
 
-            <div className="space-y-3 md:space-y-4">
+            <div className="space-y-2 md:space-y-4">
               {locations.map((location) => (
                 <motion.button
                   key={location.id}
                   onClick={() => setActiveLocation(location)}
-                  className={`w-full text-left p-3 md:p-4 rounded-lg transition-colors ${
+                  className={`w-full text-left p-2 md:p-4 rounded-lg transition-colors ${
                     activeLocation.id === location.id
-                      ? "bg-gold-900/50 border border-gold-800"
-                      : "bg-black/30 border border-gold-900/20 hover:bg-gold-900/30"
+                      ? "bg-black border border-gold-500"
+                      : "bg-black border border-gold-900/20 hover:bg-gold-900/30"
                   }`}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <h4
-                    className={`text-lg md:text-xl font-light mb-1 md:mb-2 ${
+                    className={`text-base md:text-xl font-light mb-1 md:mb-2 ${
                       activeLocation.id === location.id ? "text-gold-300" : "text-gold-400"
                     }`}
                   >
@@ -93,7 +93,7 @@ export default function GlobalPresence() {
                     <motion.p
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
-                      className="text-gold-100 text-sm md:text-base"
+                      className="text-gold-100 text-xs md:text-base"
                     >
                       {location.description}
                     </motion.p>
@@ -102,8 +102,8 @@ export default function GlobalPresence() {
               ))}
             </div>
 
-            <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-gold-900/30">
-              <p className="text-gold-100 text-sm md:text-base">
+            <div className="mt-4 md:mt-8 pt-3 md:pt-6 border-t border-gold-900/30">
+              <p className="text-gold-100 text-xs md:text-base">
                 <span className="text-gold-300 font-medium">Nuestro Compromiso:</span> Parte de nuestras utilidades se
                 destina a apoyar la preservación del patrimonio cultural maya y el desarrollo de las comunidades locales
                 en la región.

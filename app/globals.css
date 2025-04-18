@@ -242,6 +242,23 @@ html {
     background-color: black !important;
   }
 
+  /* Corregir visualización de imágenes de fondo en headers */
+  .relative.h-\[70vh\] {
+    height: 50vh !important; /* Reducir altura en móvil */
+  }
+
+  .relative.h-\[70vh\] .absolute.inset-0 {
+    opacity: 1 !important; /* Forzar opacidad completa */
+    z-index: 0 !important; /* Asegurar que esté detrás del contenido */
+  }
+
+  .relative.h-\[70vh\] .absolute.inset-0 img {
+    object-fit: cover !important;
+    object-position: center !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
   .bg-gold-950\/20,
   .bg-gold-950\/30,
   .bg-gold-950\/90,

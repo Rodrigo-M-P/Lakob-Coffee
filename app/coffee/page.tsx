@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { Leaf, Coffee } from "lucide-react"
 
 import RevealText from "@/components/reveal-text"
@@ -13,6 +13,21 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 export default function CoffeePage() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [activeTab, setActiveTab] = useState("caracteristicas")
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detectar si es dispositivo móvil
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+    }
+  }, [])
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -25,7 +40,7 @@ export default function CoffeePage() {
   return (
     <main className="bg-black min-h-screen">
       <section ref={containerRef} className="relative h-[70vh] flex items-center overflow-hidden bg-black">
-        <motion.div className="absolute inset-0 z-0" style={{ opacity }}>
+        <motion.div className="absolute inset-0 z-0" style={isMobile ? { opacity: 1 } : { opacity }}>
           <Image
             src="/images/coffee-branch-sunlight.jpeg"
             alt="Ramas de café bajo el sol"
@@ -37,7 +52,7 @@ export default function CoffeePage() {
         </motion.div>
 
         <div className="container relative z-10">
-          <motion.div className="max-w-3xl" style={{ y }}>
+          <motion.div className="max-w-3xl" style={isMobile ? {} : { y }}>
             <RevealText>
               <h1 className="text-4xl md:text-6xl font-light text-gold-300 mb-6">Nuestro Café</h1>
             </RevealText>

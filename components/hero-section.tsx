@@ -8,6 +8,21 @@ import RevealText from "./reveal-text"
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detectar si es dispositivo móvil
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+    }
+  }, [])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -39,9 +54,9 @@ export default function HeroSection() {
     <motion.section
       ref={containerRef}
       className="relative h-screen flex items-center overflow-hidden bg-black"
-      style={{ opacity }}
+      style={isMobile ? {} : { opacity }}
     >
-      <motion.div className="absolute inset-0 z-0" style={{ scale }}>
+      <motion.div className="absolute inset-0 z-0" style={isMobile ? { scale: 1 } : { scale }}>
         <div className="absolute inset-0 bg-black" />
       </motion.div>
 
@@ -59,7 +74,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 2.5 }}
           className="max-w-[800px] mx-auto px-4 sm:px-0"
-          style={{ y }}
+          style={isMobile ? {} : { y }}
         >
           <motion.div
             className="mb-6 md:mb-8 flex justify-center mt-16 md:mt-28" // Ajustado para bajar un poco el logo

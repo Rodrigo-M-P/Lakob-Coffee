@@ -3,12 +3,27 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useEffect, useState } from "react"
 import { Leaf } from "lucide-react"
 import RevealText from "@/components/reveal-text"
 
 export default function HeritagePage() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detectar si es dispositivo móvil
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+    }
+  }, [])
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -21,7 +36,7 @@ export default function HeritagePage() {
   return (
     <main className="bg-black min-h-screen">
       <section ref={containerRef} className="relative h-[70vh] flex items-center overflow-hidden bg-black">
-        <motion.div className="absolute inset-0 z-0" style={{ opacity }}>
+        <motion.div className="absolute inset-0 z-0" style={isMobile ? { opacity: 1 } : { opacity }}>
           <Image
             src="/images/chichen-itza.jpeg"
             alt="Pirámide maya de Chichén Itzá"
@@ -33,7 +48,7 @@ export default function HeritagePage() {
         </motion.div>
 
         <div className="container relative z-10">
-          <motion.div className="max-w-3xl" style={{ y }}>
+          <motion.div className="max-w-3xl" style={isMobile ? {} : { y }}>
             <RevealText>
               <h1 className="text-4xl md:text-6xl font-light text-gold-300 mb-6">Herencia Maya</h1>
             </RevealText>

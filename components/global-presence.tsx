@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import { motion } from "framer-motion"
+import MobileImage from "./mobile-image"
 
 const locations = [
   {
@@ -30,6 +30,21 @@ const locations = [
 
 export default function GlobalPresence() {
   const [activeLocation, setActiveLocation] = useState(locations[0])
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detectar si es dispositivo móvil
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+    }
+  }, [])
 
   return (
     <section className="bg-black py-12 md:py-32">
@@ -44,76 +59,80 @@ export default function GlobalPresence() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
-          {/* Contenedor de imagen simplificado para mejor compatibilidad móvil */}
-          <div className="relative h-[200px] md:h-[500px] bg-black rounded-lg overflow-hidden border border-gold-900/30">
-            {/* Renderizar todas las imágenes pero mostrar solo la activa */}
+        {isMobile ? (
+          // Versión móvil simplificada
+          <div className="space-y-8">
             {locations.map((location) => (
-              <div
-                key={location.id}
-                className="absolute inset-0"
-                style={{
-                  opacity: activeLocation.id === location.id ? 1 : 0,
-                  transition: "opacity 0.5s ease-in-out",
-                }}
-              >
-                <Image
-                  src={location.image || "/placeholder.svg"}
-                  alt={location.name}
-                  fill
-                  className="object-cover"
-                  priority={activeLocation.id === location.id}
-                />
-                <div className="absolute inset-0 bg-black/40"></div>
+              <div key={location.id} className="bg-black border border-gold-900/30 rounded-lg overflow-hidden">
+                <MobileImage src={location.image} alt={location.name} />
+                <div className="p-4">
+                  <h3 className="text-xl font-light text-gold-300 mb-2">{location.name}</h3>
+                  <p className="text-gold-100 text-sm">{location.description}</p>
+                </div>
               </div>
             ))}
           </div>
-
-          <div className="bg-black p-4 md:p-8 rounded-lg border border-gold-900/30">
-            <h3 className="text-xl md:text-3xl font-light mb-3 md:mb-6 text-gold-300">Nuestras Ubicaciones</h3>
-
-            <div className="space-y-2 md:space-y-4">
+        ) : (
+          // Versión desktop interactiva
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
+            <div className="relative h-[500px] bg-black rounded-lg overflow-hidden border border-gold-900/30">
               {locations.map((location) => (
-                <motion.button
+                <div
                   key={location.id}
-                  onClick={() => setActiveLocation(location)}
-                  className={`w-full text-left p-2 md:p-4 rounded-lg transition-colors ${
-                    activeLocation.id === location.id
-                      ? "bg-black border border-gold-500"
-                      : "bg-black border border-gold-900/20 hover:bg-gold-900/30"
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  className="absolute inset-0"
+                  style={{
+                    opacity: activeLocation.id === location.id ? 1 : 0,
+                    transition: "opacity 0.5s ease-in-out",
+                  }}
                 >
-                  <h4
-                    className={`text-base md:text-xl font-light mb-1 md:mb-2 ${
-                      activeLocation.id === location.id ? "text-gold-300" : "text-gold-400"
-                    }`}
-                  >
-                    {location.name}
-                  </h4>
-                  {activeLocation.id === location.id && (
-                    <motion.p
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      className="text-gold-100 text-xs md:text-base"
-                    >
-                      {location.description}
-                    </motion.p>
-                  )}
-                </motion.button>
+                  <Image
+                    src={location.image || "/placeholder.svg"}
+                    alt={location.name}
+                    fill
+                    className="object-cover"
+                    priority={activeLocation.id === location.id}
+                  />
+                  <div className="absolute inset-0 bg-black/40"></div>
+                </div>
               ))}
             </div>
 
-            <div className="mt-4 md:mt-8 pt-3 md:pt-6 border-t border-gold-900/30">
-              <p className="text-gold-100 text-xs md:text-base">
-                <span className="text-gold-300 font-medium">Nuestro Compromiso:</span> Parte de nuestras utilidades se
-                destina a apoyar la preservación del patrimonio cultural maya y el desarrollo de las comunidades locales
-                en la región.
-              </p>
+            <div className="bg-black p-8 rounded-lg border border-gold-900/30">
+              <h3 className="text-3xl font-light mb-6 text-gold-300">Nuestras Ubicaciones</h3>
+
+              <div className="space-y-4">
+                {locations.map((location) => (
+                  <button
+                    key={location.id}
+                    onClick={() => setActiveLocation(location)}
+                    className={`w-full text-left p-4 rounded-lg transition-colors ${
+                      activeLocation.id === location.id
+                        ? "bg-black border border-gold-500"
+                        : "bg-black border border-gold-900/20 hover:bg-gold-900/30"
+                    }`}
+                  >
+                    <h4
+                      className={`text-xl font-light mb-2 ${
+                        activeLocation.id === location.id ? "text-gold-300" : "text-gold-400"
+                      }`}
+                    >
+                      {location.name}
+                    </h4>
+                    {activeLocation.id === location.id && <p className="text-gold-100">{location.description}</p>}
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-gold-900/30">
+                <p className="text-gold-100">
+                  <span className="text-gold-300 font-medium">Nuestro Compromiso:</span> Parte de nuestras utilidades se
+                  destina a apoyar la preservación del patrimonio cultural maya y el desarrollo de las comunidades
+                  locales en la región.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   )

@@ -269,6 +269,13 @@ html {
 
 /* Mejoras para móvil */
 @media (max-width: 768px) {
+  /* Desactivar todas las animaciones en móvil */
+  * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
   /* Forzar fondo negro en todas las secciones */
   section,
   div,
@@ -290,12 +297,15 @@ html {
   /* Asegurar que las imágenes sean visibles */
   img {
     opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
   }
 
   /* Forzar visibilidad de imágenes en contenedores relativos */
   .relative img {
     opacity: 1 !important;
     visibility: visible !important;
+    display: block !important;
   }
 
   /* Asegurar que los contenedores de imágenes sean visibles */
@@ -317,6 +327,7 @@ html {
     object-fit: cover !important;
     opacity: 1 !important;
     visibility: visible !important;
+    display: block !important;
   }
 
   /* Asegurar que las imágenes de ubicación sean visibles */
@@ -325,6 +336,7 @@ html {
   [id^="portugal"] {
     opacity: 1 !important;
     visibility: visible !important;
+    display: block !important;
   }
 
   .bg-gold-950\/20,
@@ -439,5 +451,40 @@ html {
   a[href] {
     padding: 0.5rem 1rem !important;
     font-size: 0.875rem !important;
+  }
+
+  /* Forzar visibilidad de imágenes */
+  .absolute.inset-0 {
+    position: relative !important;
+    height: 200px !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Asegurar que las imágenes en posición absoluta sean visibles */
+  .absolute img {
+    position: relative !important;
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+}
+
+/* Estilos específicos para imágenes en móvil */
+@media (max-width: 768px) {
+  /* Clase específica para imágenes de países */
+  .country-image {
+    width: 100% !important;
+    height: 200px !important;
+    position: relative !important;
+    display: block !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .country-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    position: relative !important;
+    display: block !important;
   }
 }

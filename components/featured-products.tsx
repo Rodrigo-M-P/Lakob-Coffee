@@ -86,10 +86,7 @@ export default function FeaturedProducts() {
               </Link>
             </div>
 
-            <div className="mt-3 md:mt-6 text-xs md:text-sm text-gold-300/70 flex items-center">
-              <span className="inline-block w-1.5 h-1.5 bg-green-500 rounded-full mr-1 md:mr-2"></span>
-              Envío gratis en pedidos superiores a $30
-            </div>
+            {/* Se eliminó el texto de envío gratis */}
           </motion.div>
         </motion.div>
       </div>

@@ -6,11 +6,11 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { ShoppingCart, Coffee, Award } from "lucide-react"
 import Link from "next/link"
 
-// Quitar "Premium" del nombre del café
+// Actualizar el nombre del producto
 const product = {
   id: 1,
-  name: "Café Lakobá",
-  image: "/images/lakoba-package.png",
+  name: "Lakobá Café Insignia",
+  image: "/images/lakoba-package-new.png",
   category: "Tueste Medio Oscuro",
   description:
     "Nuestro café insignia con notas de chocolate y nuez. Una experiencia sensorial única que refleja la rica tradición cafetalera de las tierras altas de la región maya.",
@@ -31,20 +31,26 @@ export default function FeaturedProducts() {
   return (
     <motion.div ref={containerRef} className="relative" style={{ opacity, scale }}>
       <div className="relative overflow-hidden px-2 sm:px-0">
+        {/* Cambiamos el diseño para dar más protagonismo a la imagen */}
         <motion.div className="flex flex-col md:flex-row bg-black rounded-lg overflow-hidden border border-gold-900/30 shadow-lg">
-          <div className="relative w-full md:w-1/2 h-[250px] md:h-[500px] overflow-hidden bg-black p-4 md:p-8 flex items-center justify-center">
-            <div className="relative h-full w-full max-w-[200px] md:max-w-[300px] mx-auto">
+          {/* Aumentamos el tamaño de la imagen y le damos más espacio */}
+          <div className="relative w-full md:w-3/5 h-[400px] md:h-[700px] overflow-hidden bg-black p-4 md:p-8 flex items-center justify-center">
+            <div className="relative h-full w-full mx-auto flex items-center justify-center">
               <Image
-                src="/images/lakoba-package.png"
-                alt="Café Lakobá"
-                fill
-                className="object-contain drop-shadow-2xl transform transition-transform duration-700 hover:scale-105"
+                src="/images/lakoba-package-new.png"
+                alt="Lakobá Café Insignia"
+                width={500}
+                height={700}
+                className="object-contain drop-shadow-2xl transform transition-transform duration-700 hover:scale-105 max-h-full max-w-full"
+                style={{ maxHeight: "90%", maxWidth: "90%" }}
+                priority
               />
             </div>
           </div>
 
+          {/* Reducimos el ancho del contenido para dar más espacio a la imagen */}
           <motion.div
-            className="w-full md:w-1/2 p-4 md:p-12 flex flex-col justify-center bg-black relative"
+            className="w-full md:w-2/5 p-4 md:p-12 flex flex-col justify-center bg-black relative"
             style={{ y }}
           >
             <div className="flex items-center mb-2">
@@ -85,8 +91,6 @@ export default function FeaturedProducts() {
                 Ver Detalles
               </Link>
             </div>
-
-            {/* Se eliminó el texto de envío gratis */}
           </motion.div>
         </motion.div>
       </div>

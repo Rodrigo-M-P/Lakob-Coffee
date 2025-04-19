@@ -41,10 +41,10 @@ export default function CoffeePage() {
                   viewport={{ once: true }}
                   className="relative"
                 >
-                  <div className="relative h-[500px] rounded-lg overflow-hidden">
+                  <div className="relative h-[600px] rounded-lg overflow-hidden">
                     <Image
-                      src="/images/lakoba-package.png"
-                      alt="Café Lakobá"
+                      src="/images/lakoba-package-new.png"
+                      alt="Lakobá Café Insignia"
                       fill
                       className="object-contain bg-gray-900/30"
                     />
@@ -61,7 +61,7 @@ export default function CoffeePage() {
                     <span className="text-sm text-gold-500">Tueste Medio Oscuro</span>
                   </div>
 
-                  <h2 className="text-3xl md:text-4xl font-light text-gold-300 mb-4">Café Lakobá</h2>
+                  <h2 className="text-3xl md:text-4xl font-light text-gold-300 mb-4">Lakobá Café Insignia</h2>
 
                   <p className="text-gold-100 mb-8">
                     Nuestro café insignia con notas de chocolate y nuez. Una experiencia sensorial única de las tierras

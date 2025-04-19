@@ -12,9 +12,9 @@ export default function Home() {
 
       <HeroSection />
 
-      {/* Sección optimizada con menos texto */}
-      <section className="container pt-32 pb-24 md:pt-40 md:pb-32">
-        <div className="flex flex-col items-center text-center mb-16 md:mb-24">
+      {/* Sección optimizada con menos texto y más espacio para el producto */}
+      <section className="container pt-24 pb-16 md:pt-32 md:pb-24">
+        <div className="flex flex-col items-center text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-6 text-gold-300">
             Experiencia Excepcional de Café
           </h2>
@@ -22,14 +22,13 @@ export default function Home() {
             Café meticulosamente cultivado en las tierras altas de Chiapas, donde tradiciones ancestrales se combinan
             con prácticas sostenibles modernas.
           </p>
-          {/* Se eliminaron los botones de redirección aquí */}
         </div>
 
-        {/* Producto para comprar directamente */}
-        <FeaturedProducts />
+        {/* Producto para comprar directamente - ahora con más espacio */}
+        <div className="max-w-[1400px] mx-auto">
+          <FeaturedProducts />
+        </div>
       </section>
-
-      {/* Se eliminó la sección CoffeeCategoriesCarousel (Nuestra Selección de Café) */}
 
       <StorySection />
 

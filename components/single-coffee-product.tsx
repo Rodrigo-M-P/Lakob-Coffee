@@ -5,10 +5,10 @@ import { motion } from "framer-motion"
 import { Coffee } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-// Quitar "Premium" del nombre del café
+// Actualizar el nombre del café
 const coffeeProduct = {
   id: 1,
-  name: "Café Lakobá",
+  name: "Lakobá Café Insignia",
   image: "/images/coffee-bag-open.jpeg",
   category: "Tueste Medio Oscuro",
   description:
@@ -44,13 +44,13 @@ export default function SingleCoffeeProduct() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="relative h-[500px] rounded-lg overflow-hidden"
+          className="relative h-[600px] rounded-lg overflow-hidden"
         >
           <Image
             src={coffeeProduct.image || "/placeholder.svg"}
             alt={coffeeProduct.name}
             fill
-            className="object-cover"
+            className="object-contain"
           />
         </motion.div>
 
@@ -65,6 +65,7 @@ export default function SingleCoffeeProduct() {
             <div className="flex ml-4"></div>
           </div>
 
+          {/* Actualizar el título en el componente */}
           <h2 className="text-3xl md:text-4xl font-light text-gold-300 mb-4">{coffeeProduct.name}</h2>
 
           <p className="text-gold-100 mb-8">{coffeeProduct.description}</p>

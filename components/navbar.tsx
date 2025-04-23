@@ -49,7 +49,7 @@ export default function Navbar() {
         <div className="container flex items-center justify-between">
           <div className="flex items-center">
             <MagneticButton
-              className="md:hidden mr-2 bg-transparent hover:bg-transparent cursor-hover"
+              className="md:hidden mr-2 bg-transparent hover:bg-transparent"
               onClick={() => setIsOpen(true)}
               strength={25}
             >
@@ -57,7 +57,7 @@ export default function Navbar() {
               <span className="sr-only">Abrir menú</span>
             </MagneticButton>
 
-            <Link href="/" className="flex items-center space-x-2 cursor-hover" onClick={handleNavClick}>
+            <Link href="/" className="flex items-center space-x-2" onClick={handleNavClick}>
               <Image
                 src="/images/lakoba-face-logo.png"
                 alt="Logo de Lakobá"
@@ -76,7 +76,7 @@ export default function Navbar() {
                   {link.external ? (
                     <a
                       href={link.href}
-                      className="text-sm tracking-wide text-gold-100 hover:text-gold-400 transition-colors relative cursor-hover"
+                      className="text-sm tracking-wide text-gold-100 hover:text-gold-400 transition-colors relative"
                       target="_blank"
                       rel="noopener noreferrer"
                       onMouseEnter={() => setHoveredItem(link.name)}
@@ -97,7 +97,7 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={link.href}
-                      className="text-sm tracking-wide text-gold-100 hover:text-gold-400 transition-colors relative cursor-hover"
+                      className="text-sm tracking-wide text-gold-100 hover:text-gold-400 transition-colors relative"
                       onMouseEnter={() => setHoveredItem(link.name)}
                       onMouseLeave={() => setHoveredItem(null)}
                       onClick={handleNavClick}
@@ -142,7 +142,7 @@ export default function Navbar() {
             }}
           >
             <div className="container flex justify-between items-center py-6">
-              <Link href="/" className="flex items-center space-x-2 cursor-hover" onClick={handleNavClick}>
+              <Link href="/" className="flex items-center space-x-2" onClick={handleNavClick}>
                 <Image
                   src="/images/lakoba-face-logo.png"
                   alt="Logo de Lakobá"
@@ -153,7 +153,7 @@ export default function Navbar() {
                 <span className="text-xl font-light tracking-widest text-gold-400">LAKOBÁ</span>
               </Link>
               <MagneticButton
-                className="text-gold-400 bg-transparent hover:bg-transparent cursor-hover"
+                className="text-gold-400 bg-transparent hover:bg-transparent"
                 onClick={() => setIsOpen(false)}
                 strength={25}
               >
@@ -177,7 +177,7 @@ export default function Navbar() {
                     {link.external ? (
                       <a
                         href={link.href}
-                        className="text-gold-300 text-2xl font-light tracking-wide hover:text-gold-500 transition-colors cursor-hover"
+                        className="text-gold-300 text-2xl font-light tracking-wide hover:text-gold-500 transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -186,7 +186,7 @@ export default function Navbar() {
                     ) : (
                       <Link
                         href={link.href}
-                        className="text-gold-300 text-2xl font-light tracking-wide hover:text-gold-500 transition-colors cursor-hover"
+                        className="text-gold-300 text-2xl font-light tracking-wide hover:text-gold-500 transition-colors"
                         onClick={handleNavClick}
                       >
                         {link.name}
@@ -204,24 +204,15 @@ export default function Navbar() {
                   transition: { delay: 0.6 },
                 }}
               >
-                <Link
-                  href="https://instagram.com"
-                  className="text-gold-500 hover:text-gold-300 transition-colors cursor-hover"
-                >
+                <Link href="https://instagram.com" className="text-gold-500 hover:text-gold-300 transition-colors">
                   <Instagram className="h-6 w-6" />
                   <span className="sr-only">Instagram</span>
                 </Link>
-                <Link
-                  href="https://facebook.com"
-                  className="text-gold-500 hover:text-gold-300 transition-colors cursor-hover"
-                >
+                <Link href="https://facebook.com" className="text-gold-500 hover:text-gold-300 transition-colors">
                   <Facebook className="h-6 w-6" />
                   <span className="sr-only">Facebook</span>
                 </Link>
-                <Link
-                  href="https://twitter.com"
-                  className="text-gold-500 hover:text-gold-300 transition-colors cursor-hover"
-                >
+                <Link href="https://twitter.com" className="text-gold-500 hover:text-gold-300 transition-colors">
                   <Twitter className="h-6 w-6" />
                   <span className="sr-only">Twitter</span>
                 </Link>

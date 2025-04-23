@@ -55,10 +55,10 @@
   }
   body {
     @apply bg-black text-foreground; /* Forzar fondo negro */
-    cursor: none; /* Hide default cursor on desktop */
+    cursor: auto; /* Restaurar el cursor normal */
   }
 
-  /* Show default cursor on mobile/touch devices */
+  /* Mostrar cursor normal en todos los dispositivos */
   @media (max-width: 768px) or (pointer: coarse) {
     body {
       cursor: auto;
@@ -226,9 +226,9 @@ html {
   background-color: #000; /* Asegurar fondo negro */
 }
 
-/* Add cursor-hover class back for interactive elements */
+/* Eliminar la clase cursor-hover y restaurar el cursor normal */
 .cursor-hover {
-  cursor: none;
+  cursor: pointer; /* Cambiar a cursor pointer para elementos interactivos */
 }
 
 /* Estilos específicos para imágenes de fondo en headers */

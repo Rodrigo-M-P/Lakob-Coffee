@@ -43,7 +43,7 @@ export default function MagneticButton({
   const buttonContent = (
     <motion.button
       ref={ref}
-      className={`cursor-hover ${className}`}
+      className={`${className}`} // Eliminamos la clase cursor-hover
       onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}

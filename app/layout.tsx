@@ -6,7 +6,8 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-import OptimizedCursor from "@/components/optimized-cursor"
+// Eliminamos la importación del cursor personalizado
+// import OptimizedCursor from "@/components/optimized-cursor"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -30,7 +31,7 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning className="bg-black">
       <body className={`${inter.className} bg-black`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
-          <OptimizedCursor />
+          {/* Eliminamos el componente OptimizedCursor */}
           <Navbar />
           {children}
           <Footer />
